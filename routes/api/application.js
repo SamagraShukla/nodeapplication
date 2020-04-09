@@ -94,7 +94,8 @@ router.post('/',[
   router.delete('/', async (req, res) => {
     try {
       // find the element
-      await User.findByIdAndRemove({ _email: req.body.email });
+      await application.findOneAndDelete({ email: req.body.email });
+      // await application.findByIdAndRemove({ email: req.body.email });
   
       res.json({ msg: 'application deleted' });
     } catch (err) {
